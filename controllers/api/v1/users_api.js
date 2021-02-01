@@ -112,7 +112,12 @@ module.exports.createSession = async function(req, res){
 
 module.exports.paginate = async function(req, res) {
     //TODO Later 
-    //Populate company details using aggregation 
+    //Populate company details using aggregation
+    //Company Schema doesn't define whether a user contains a single id or an array of ids
+    //if we make an aggregation to find company detail of a user then this might not be an optimized approach
+    //User must contain a company id so that we can populate company details efficiently
+    //As a company can have more than one user (one to many relationship)
+    //An improvement must be there in the schema
         try{
             let entryPerPage = req.body.limit;
             let pageNum = req.body.page;
